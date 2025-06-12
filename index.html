@@ -3,15 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Medical History Locker</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
-    h1 { color: #333; }
-    form { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; }
-    input, textarea { width: 100%; margin: 10px 0; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-    button { padding: 10px 20px; background: #1976D2; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    button:hover { background: #125ea0; }
-    .saved { background: #e0f2f1; padding: 20px; border-radius: 8px; margin-top: 20px; }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Medical History Locker</h1>
@@ -28,45 +20,6 @@
 
   <div id="savedData" class="saved" style="display:none;"></div>
 
-  <script>
-    const form = document.getElementById('medicalForm');
-    const savedData = document.getElementById('savedData');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = {
-        name: document.getElementById('name').value,
-        dob: document.getElementById('dob').value,
-        allergies: document.getElementById('allergies').value,
-        medications: document.getElementById('medications').value,
-        conditions: document.getElementById('conditions').value,
-        contacts: document.getElementById('contacts').value,
-        insurance: document.getElementById('insurance').value
-      };
-      localStorage.setItem('medicalData', JSON.stringify(data));
-      displaySavedData(data);
-    });
-
-    function displaySavedData(data) {
-      savedData.innerHTML = `
-        <h2>Saved Information</h2>
-        <p><b>Name:</b> ${data.name}</p>
-        <p><b>Date of Birth:</b> ${data.dob}</p>
-        <p><b>Allergies:</b> ${data.allergies}</p>
-        <p><b>Medications:</b> ${data.medications}</p>
-        <p><b>Conditions:</b> ${data.conditions}</p>
-        <p><b>Contacts:</b> ${data.contacts}</p>
-        <p><b>Insurance:</b> ${data.insurance}</p>
-      `;
-      savedData.style.display = 'block';
-    }
-
-    window.onload = () => {
-      const storedData = localStorage.getItem('medicalData');
-      if (storedData) {
-        displaySavedData(JSON.parse(storedData));
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
